@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		= "org.tadl.mobile"
+	version 	= "0.0.2">
+
+	<name>TADL</name>
+
+	<description>
+		TADL Mobile Beta
+	</description>
+
+	<author href="http://www.tadl.org"
+		email="wrockwood@tadl.org">
+		William Rockwood
+	</author>
+
+	<gap:platforms>
+		<gap:platform name="android" minVersion="2.1" />
+		<gap:platform name="webos" />
+		<gap:platform name="symbian.wrt" />
+		<gap:platform name="blackberry" project="widgets"/>
+	</gap:platforms>
+
+	<gap:splash src="default.png" />
+
+	<icon src="8bit-tadl-icon.png" gap:role="default" />
+
+    <!-- <gap:splash src="weirdo.png" /> -->
+
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
+	<!-- sample preference specification -->
+	<!-- <preference name="autorotate" value="false" readonly="true"/> -->
+	<preference name="phonegap-version" value="2.3.0" />
+</widget>

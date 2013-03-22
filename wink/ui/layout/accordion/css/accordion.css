@@ -1,0 +1,27 @@
+.ac_accordion
+{
+	position: relative;
+}
+
+.w_list.ac_accordion .w_bloc
+{
+	background-color: #fff;
+}
+
+.ac_section
+{	
+	position: relative;
+}
+.ac_content
+{
+	position: absolute;
+	bottom: 0px;
+	z-index: 49;
+	width: 100%;
+}
+
+.ac_title_container
+{
+	position: relative;
+	z-index: 50;
+}

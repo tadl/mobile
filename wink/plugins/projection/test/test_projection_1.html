@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <title>Test projection 1</title>
+        
+        <!-- THEME UTILITY -->
+        <link rel="stylesheet" href="../../../_themes/utils/loader.css" type="text/css">
+        <!-- END THEME UTILITY -->
+		
+        <!-- CORE -->
+        <!-- Can be replaced by wink.min.js -->
+        <script type="text/javascript" src="../../../_amd/js/amd.js"></script>
+        <script type="text/javascript" src="../../../_base/_base/js/base.js"></script>
+        <script type="text/javascript" src="../../../_base/error/js/error.js"></script>
+        <script type="text/javascript" src="../../../_base/json/js/json.js"></script>
+        <script type="text/javascript" src="../../../_base/ua/js/ua.js"></script>
+        <script type="text/javascript" src="../../../_base/topics/js/topics.js"></script>
+        <script type="text/javascript" src="../../../_base/_feat/js/feat.js"></script>
+        <script type="text/javascript" src="../../../_base/_feat/js/feat_json.js"></script>
+        <script type="text/javascript" src="../../../_base/_feat/js/feat_css.js"></script>
+        <script type="text/javascript" src="../../../_base/_feat/js/feat_event.js"></script>
+        <script type="text/javascript" src="../../../_base/_feat/js/feat_dom.js"></script>
+        <script type="text/javascript" src="../../../fx/_xy/js/2dfx.js"></script>
+        <script type="text/javascript" src="../../../math/_basics/js/basics.js"></script>
+        <script type="text/javascript" src="../../../net/xhr/js/xhr.js"></script>
+        <script type="text/javascript" src="../../../ui/xy/layer/js/layer.js"></script>
+        <script type="text/javascript" src="../../../ux/event/js/event.js"></script>
+        <script type="text/javascript" src="../../../ux/touch/js/touch.js"></script>
+        <!-- END CORE -->
+        
+        <script type="text/javascript" src="../../../math/_matrix/js/matrix.js"></script>
+        <script type="text/javascript" src="../../../fx/_xyz/js/3dfx.js"></script>
+		<script type="text/javascript" src="../../../ux/gesture/js/gesture.js"></script>
+        <script type="text/javascript" src="../../../plugins/projection/js/projection.js"></script>
+        
+        <!-- STYLES -->
+        <link rel="stylesheet" href="css/test_projection_1.css" type="text/css">
+        <!-- END STYLES -->
+        
+        <!-- FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu|Lobster|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <!-- END FONTS -->
+        
+        <script type="text/javascript">
+            var init = function() 
+            {
+                
+                var fx = wink.fx,
+                    elemsToRotate = ['rotate', 'rotate1', 'rotate2', 'rotate3', 'rotate4'],
+                    elemsToRotate_l = elemsToRotate.length,
+                    percent = 0, depth = 0, elem = null;
+                
+                for(var i=0; i < elemsToRotate_l; i++) {
+                    elemsToRotate[i] = wink.byId(elemsToRotate[i]);
+                }
+                
+                var projection = new wink.plugins.Projection({
+                    target: 'wrapper',
+                    speed: 10,
+                    callbacks: {
+                        onSliding: function(args) {
+                            depth = args.depth;
+                            percent = (depth.current - depth.start) / (depth.end - depth.start);
+                            
+                            elem = null;
+                            for(var i=0; i < elemsToRotate_l; i++) {
+                               elem = elemsToRotate[i];
+                               fx.setTransform(elem, fx.getTransform(elem) + ' rotateY('+(percent * 360)+'deg)');
+                            }
+                        }
+                    },
+                    layers: [
+                        {
+                            element: wink.byId('section2'),
+                            depth: 300,
+                            children: [
+                                { element: wink.byId('section2').children[0], depth: 385 },
+                                { element: wink.byId('section2').children[1], depth: 355 }
+                            ]
+                        }
+                    ]
+                });
+                
+//                projection.setPerspective(75);
+                projection.setPerspectiveOrigin('50%', '75%');
+                
+                // Navigation by scrolling or enlargement for mobiles and tablets
+                if(wink.ua.isMobile) {
+                    var touchZone = wink.byId('touch-zone');
+                    wink.ux.gesture.listenTo(touchZone, "enlargement", { context: projection, method: "moveForward" }, { preventDefault: true });
+                    wink.ux.gesture.listenTo(touchZone, "narrowing", { context: projection, method: "moveBackward" }, { preventDefault: true });
+                } else {
+                    //FF doesn't recognize mousewheel as of FF3.x
+                    var _mousewheelevt=(/Firefox/i.test(navigator.userAgent))? 
+                        "DOMMouseScroll" : "mousewheel";
+
+                    var func = function(e) {
+                        e.preventDefault();
+
+                        if(e.wheelDeltaY > 0) { this.moveForward(); }
+                        else
+                        if(e.wheelDeltaY < 0) { this.moveBackward(); }
+                    };
+
+                    if (document.attachEvent) //if IE (and Opera depending on user setting) 
+                        document.attachEvent("on"+_mousewheelevt, wink.bind(func, projection));
+                    else 
+                    if (document.addEventListener) //WC3 browsers
+                        document.addEventListener(_mousewheelevt, wink.bind(func, projection), false);
+                }
+                
+                // Add event on the menu items
+                var menuItems = wink.byId('menuItems').children;
+                for(var i=0, l=menuItems.length; i < l; i++) 
+                {
+                    wink.ux.touch.addListener(menuItems[i], 'start', function() {});
+                    wink.ux.touch.addListener(menuItems[i], 'move',  function() {});
+                    wink.ux.touch.addListener(menuItems[i], 'end',   (function(li) {
+                        return function() {
+                            projection.moveTo(wink.byId(li.id.replace('to_', '')));
+                        };
+                    })(menuItems[i]));
+                }
+            };
+            
+            
+        </script>
+    </head>
+    <body onload="init();">
+        
+        <div id="container">
+            <div id="wrapper">
+                <section id="section1" data-depth="100">
+                    <h1>Titre 1</h1>
+                    <img data-depth="170" src="http://fakeimg.pl/150/00abee/fff?text=1" />
+                    <img data-depth="150" src="http://fakeimg.pl/300/00abee/fff?text=1" />
+                    <img src="http://fakeimg.pl/150/00abee/fff?text=1" />
+                    <img data-depth="250" src="http://fakeimg.pl/150/00abee/fff?text=1" />
+                    <img data-depth="110" src="http://fakeimg.pl/150/00abee/fff?text=1" />
+                </section>
+                
+                <section id="section2">
+                    <img id="rotate" src="http://fakeimg.pl/450/69ff2f/fff?text=2" />
+                    <img src="http://fakeimg.pl/150/69ff2f/fff?text=2" />
+                </section>
+                
+                <section id="section3" data-depth="600">
+                    <img data-depth="605" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="627" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="650" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="690" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="690" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="690" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="690" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="630" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="660" src="http://fakeimg.pl/150/ebff6d/fff?text=3" id="rotate1" />
+                    <img data-depth="610" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="684" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="634" src="http://fakeimg.pl/150/ebff6d/fff?text=3" />
+                    <img data-depth="630" src="http://fakeimg.pl/150/ebff6d/fff?text=3" id="rotate3" />
+                    <img data-depth="650" src="http://fakeimg.pl/150/ebff6d/fff?text=3" id="rotate4" />
+                </section>
+                
+                <section id="section4" data-depth="700">
+                    <img data-depth="750" src="http://fakeimg.pl/150/ff3e0f/fff?text=4" />
+                    <img data-depth="720" src="http://fakeimg.pl/150/ff3e0f/fff?text=4" id="rotate2" />
+                    <img data-depth="730" src="http://fakeimg.pl/150/ff3e0f/fff?text=4" />
+                    <img data-depth="790" src="http://fakeimg.pl/150/ff3e0f/fff?text=4" />
+                </section>
+                
+                <section id="section5" data-depth="1700">
+                    <img data-depth="1750" src="http://fakeimg.pl/150/723bff/fff?text=5" />
+                    <img data-depth="1720" src="http://fakeimg.pl/150/723bff/fff?text=5" />
+                    <img data-depth="1730" src="http://fakeimg.pl/150/723bff/fff?text=5" />
+                    <img data-depth="1790" src="http://fakeimg.pl/150/723bff/fff?text=5" />
+                </section>
+                
+                <div id="touch-zone">
+                    <span>Touch Zone !!</span>
+                    <img src="img/test1/spread.png" alt="spread" width="25" />
+                    <img src="img/test1/pinch.png" alt="pinch" width="25" />
+                    <div class="white-zone"></div>
+                </div>
+            </div>
+            <div id="levels-zone">
+                <ul id="menuItems">
+                    <li id="to_section1">Section 1</li>
+                    <li id="to_section2">Section 2</li>
+                    <li id="to_section3">Section 3</li>
+                    <li id="to_section4">Section 4</li>
+                    <li id="to_section5">Section 5</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
