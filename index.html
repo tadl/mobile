@@ -1,54 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Traverse Area District Library</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<script type="text/javascript" src="./wink/wink.min.js"></script>
-	<script type="text/javascript" src="./wink/ui/layout/slidingpanels/js/slidingpanels.js"></script>
-	<script type="text/javascript" src="./wink/ui/xy/spinner/js/spinner.js"></script>
-	<script type="text/javascript" src="./wink/plugins/asyncpanels/js/asyncpanels.js"></script>
 
+    <title>Traverse Area District Library</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="./wink/_themes/wink.css" type="text/css" />
+    <link rel="stylesheet" href="./wink/ui/layout/slidingpanels/css/slidingpanels.css" type="text/css" />
+    <link rel="stylesheet" href="./wink/ui/xy/spinner/css/spinner.css" type="text/css" />
+    <link rel="stylesheet" href="./wink/plugins/asyncpanels/css/asyncpanels.css" type="text/css" />
+    <link rel="stylesheet" href="./css/custom.css" type="text/css" />
+    
+    <script type="text/javascript" src="./wink/wink-1.4.3.min.js"></script>
+    <script type="text/javascript" src="./wink/ui/layout/slidingpanels/js/slidingpanels.js"></script>
+    <script type="text/javascript" src="./wink/ui/xy/spinner/js/spinner.js"></script>
+    <script type="text/javascript" src="./wink/plugins/asyncpanels/js/asyncpanels.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
 
-	<link rel="stylesheet" href="./wink/_themes/wink.css" type="text/css" />
-	<link rel="stylesheet" href="./wink/ui/layout/slidingpanels/css/slidingpanels.css" type="text/css" />
-	<link rel="stylesheet" href="./wink/ui/xy/spinner/css/spinner.css" type="text/css" />
-	<link rel="stylesheet" href="./wink/plugins/asyncpanels/css/asyncpanels.css" type="text/css" />
-	
 </head>
 
 <body>
 <div class="w_header_custom">
-	<div id="back" class="w_button_custom w_back w_left">
-		<input type="button" value="back" />
-	</div>
-	<span>TADL MOBL</span>
+    <div id="back" class="w_button_custom w_back w_left">
+        <input type="button" value="back" onclick="main.panels.slideBack();"/>
+    </div>
+    <span>TADL MOBL</span>
 </div>
 
 <div id="page1">
-	<div>
-		<ul class="w_list w_border">
-			<li class="w_list_item w_border_bottom">
-				<a href="#" >
-					Locations
-					<span class="w_icon w_chevron"></span>
-				</a>
-			</li>
-			<li class="w_list_item w_border_bottom">
-				<a href="#" >
-					Search
-					<span class="w_icon w_chevron"></span>
-				</a>
-			</li>
-		</ul>
-	</div>
+    <div>
+        <ul class="w_list w_border">
+            <li class="w_list_item w_border_bottom">
+                <a href="#" onclick="main.panels.slideTo('page2')">
+                    Locations
+                    <span class="w_icon w_chevron"></span>
+                </a>
+            </li>
+            <li class="w_list_item w_border_bottom">
+                <a href="#" onclick="main.panels.slideTo('page3')">
+                    Search
+                    <span class="w_icon w_chevron"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
 <div id="page2">
-	<!-- Locations content -->
+    <!-- Locations content -->
 </div>
 <div id="page3">
-	<!-- Search content -->
+    <!-- Search content -->
 </div>
-
 
 </body>
 </html>
