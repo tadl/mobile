@@ -1,0 +1,34 @@
+.w_border, .w_border_bottom
+{
+    border-color: #2785c7;  
+}
+ 
+.w_list .w_list_item
+{
+    background-color: #e8e7e7;
+     
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e8e7e7));
+    background-image: -moz-linear-gradient(top, #fff, #e8e7e7);
+}
+ 
+.w_header_custom
+{
+    background-color: #405e87;
+     
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#206493), to(#2375ae), color-stop(85%, #2785c7));
+    background-image: -moz-linear-gradient(top, #206493, #2375ae, #2785c7 85%);
+     
+    color: #fff;
+     
+    -webkit-box-shadow: -5px 3px 5px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: -5px 3px 5px rgba(0, 0, 0, 0.7);
+}
+ 
+.w_button_custom input
+{
+    border-color: #12344c;
+    background-color: #405e87;
+     
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2fa7fa), to(#2375ae), color-stop(30%, #2785c6));
+    background-image: -moz-linear-gradient(top, #2fa7fa, #2375ae, #2785c6 30%);
+}
