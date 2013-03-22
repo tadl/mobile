@@ -2,15 +2,15 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		= "org.tadl.mobile"
-	version 	= "0.0.2">
+	version 	= "0.0.3">
 
-	<name>TADL</name>
+	<name>TADL MOBL</name>
 
 	<description>
 		TADL Mobile Beta
 	</description>
 
-	<author href="http://www.tadl.org"
+	<author href="http://www.tadl.org/"
 		email="wrockwood@tadl.org">
 		William Rockwood
 	</author>
@@ -22,11 +22,9 @@
 		<gap:platform name="blackberry" project="widgets"/>
 	</gap:platforms>
 
-	<gap:splash src="default.png" />
+	<gap:splash src="img/default.png" />
 
-	<icon src="8bit-tadl-icon.png" gap:role="default" />
-
-    <!-- <gap:splash src="weirdo.png" /> -->
+	<icon src="img/8bit-tadl-icon.png" gap:role="default" />
 
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
