@@ -32,4 +32,6 @@
 	<!-- sample preference specification -->
 	<!-- <preference name="autorotate" value="false" readonly="true"/> -->
 	<preference name="phonegap-version" value="2.3.0" />
+
+    <access origin="http://tadl.org" subdomains="true" />
 </widget>

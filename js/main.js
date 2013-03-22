@@ -13,7 +13,7 @@ var main = (function()
                     [
                         'page1',
                         {id: 'page2', url: 'locations.html'},
-                        {id: 'page3', url: 'search.html'}
+                        {id: 'page3', url: 'http://www.tadl.org/mobile/news/feed'}
                     ]
                 }
             );
