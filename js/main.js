@@ -7,7 +7,9 @@ var main = (function() {
                 pages: [
                     'page1',
                     {id: 'locations', url: 'locations.html'},
-                    {id: 'news', url: 'http://www.tadl.org/mobile/news/feed'}
+                    'news'
+                    //{id: 'news', url: 'http://m.tadl.org/app/app-news-items.php'}
+/*                    {id: 'news', url: 'http://www.tadl.org/mobile/news/feed'} */
                 ]
             });
             document.body.appendChild(this.panels.getDomNode());
@@ -15,12 +17,20 @@ var main = (function() {
             wink.subscribe('/slidingpanels/events/slidestart', {context: this, method: 'toggleBackButtonDisplay', arguments: 'start'});
             wink.subscribe('/slidingpanels/events/slideend', {context: this, method: 'toggleBackButtonDisplay', arguments: 'end'});
             scrollTo(0, 0, 0);
+
         },
         toggleBackButtonDisplay: function(params, status) {
             switch ( params.id ) {
                 case 'page1':
                     if ( status == 'start' ) {
                         wink.byId('back').style.display = 'none';
+                    }
+                    break;
+
+                case 'news':
+                    if ( status == 'end' ) {
+                        wink.byId('back').style.display = 'block';
+                        accordionInit();
                     }
                     break;
 
@@ -37,3 +47,4 @@ var main = (function() {
 
     return main;
 }());
+
