@@ -8,8 +8,6 @@ var main = (function() {
                     'page1',
                     {id: 'locations', url: 'locations.html'},
                     'news'
-                    //{id: 'news', url: 'http://m.tadl.org/app/app-news-items.php'}
-/*                    {id: 'news', url: 'http://www.tadl.org/mobile/news/feed'} */
                 ]
             });
             document.body.appendChild(this.panels.getDomNode());
