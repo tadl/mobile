@@ -23,6 +23,9 @@ var main = (function() {
                     if ( status == 'start' ) {
                         wink.byId('back').style.display = 'none';
                     }
+                    if ( status == 'end' ) {
+                        wink.byId('news').removeChild(accordion.getDomNode());
+                    }
                     break;
 
                 case 'news':
