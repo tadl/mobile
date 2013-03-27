@@ -7,7 +7,10 @@ var main = (function() {
                 pages: [
                     'page1',
                     {id: 'locations', url: 'locations.html'},
-                    'news'
+                    {id: 'search', url: 'search.html'},
+                    'events',
+                    'news',
+                    {id: 'help', url: 'help.html'}
                 ]
             });
             document.body.appendChild(this.panels.getDomNode());
@@ -24,14 +27,14 @@ var main = (function() {
                         wink.byId('back').style.display = 'none';
                     }
                     if ( status == 'end' ) {
-                        wink.byId('news').removeChild(accordion.getDomNode());
+                        wink.byId('news').removeChild(newsAccordion.getDomNode());
                     }
                     break;
 
                 case 'news':
                     if ( status == 'end' ) {
                         wink.byId('back').style.display = 'block';
-                        accordionInit();
+                        newsAccordionInit();
                     }
                     break;
 
