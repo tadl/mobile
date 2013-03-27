@@ -28,6 +28,7 @@ var main = (function() {
                     }
                     if ( status == 'end' ) {
                         wink.byId('news').removeChild(newsAccordion.getDomNode());
+                        wink.byId('events').removeChild(eventsAccordion.getDomNode());
                     }
                     break;
 
@@ -35,6 +36,13 @@ var main = (function() {
                     if ( status == 'end' ) {
                         wink.byId('back').style.display = 'block';
                         newsAccordionInit();
+                    }
+                    break;
+
+                case 'events':
+                    if ( status == 'end' ) {
+                        wink.byId('back').style.display = 'block';
+                        eventsAccordionInit();
                     }
                     break;
 
