@@ -10,7 +10,13 @@ var main = (function() {
                     {id: 'search', url: 'search.html'},
                     'events',
                     'news',
-                    {id: 'help', url: 'help.html'}
+                    {id: 'help', url: 'help.html'},
+                    {id: 'eastbay', url: 'location-eastbay.html'},
+                    {id: 'fifelake', url: 'location-fifelake.html'},
+                    {id: 'interlochen', url: 'location-interlochen.html'},
+                    {id: 'kingsley', url: 'location-kingsley.html'},
+                    {id: 'peninsula', url: 'location-peninsula.html'},
+                    {id: 'woodmere', url: 'location-woodmere.html'}
                 ]
             });
             document.body.appendChild(this.panels.getDomNode());
