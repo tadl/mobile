@@ -22,9 +22,9 @@
 		<gap:platform name="blackberry" project="widgets"/>
 	</gap:platforms>
 
-	<gap:splash src="./img/default.png" />
+	<gap:splash src="img/splash.png" />
 
-	<icon src="./img/8bit-tadl-icon.png" gap:role="default" />
+	<icon src="img/8bit-tadl-icon.png" gap:role="default" />
 
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
