@@ -21,20 +21,22 @@ var main = (function() {
             });
             document.body.appendChild(this.panels.getDomNode());
 
-            wink.subscribe('/slidingpanels/events/slidestart', {context: this, method: 'toggleBackButtonDisplay', arguments: 'start'});
-            wink.subscribe('/slidingpanels/events/slideend', {context: this, method: 'toggleBackButtonDisplay', arguments: 'end'});
+            wink.subscribe('/slidingpanels/events/slidestart', {context: this, method: 'doStuff', arguments: 'start'});
+            wink.subscribe('/slidingpanels/events/slideend', {context: this, method: 'doStuff', arguments: 'end'});
             scrollTo(0, 0, 0);
 
         },
-        toggleBackButtonDisplay: function(params, status) {
+        doStuff: function(params, status) {
             switch ( params.id ) {
                 case 'page1':
                     if ( status == 'start' ) {
                         wink.byId('back').style.display = 'none';
                     }
                     if ( status == 'end' ) {
-                        wink.byId('news').removeChild(newsAccordion.getDomNode());
-                        wink.byId('events').removeChild(eventsAccordion.getDomNode());
+                        try {
+                            wink.byId('news').removeChild(newsAccordion.getDomNode());
+                            wink.byId('events').removeChild(eventsAccordion.getDomNode());
+                        } catch(err) {}
                     }
                     break;
 
