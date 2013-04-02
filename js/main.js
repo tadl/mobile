@@ -16,7 +16,8 @@ var main = (function() {
                     {id: 'interlochen', url: 'location-interlochen.html'},
                     {id: 'kingsley', url: 'location-kingsley.html'},
                     {id: 'peninsula', url: 'location-peninsula.html'},
-                    {id: 'woodmere', url: 'location-woodmere.html'}
+                    {id: 'woodmere', url: 'location-woodmere.html'},
+                    {id: 'myaccount', url: 'myaccount.html'}
                 ]
             });
             document.body.appendChild(this.panels.getDomNode());

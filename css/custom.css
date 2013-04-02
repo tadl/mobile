@@ -39,7 +39,6 @@ p {
 	font-size: 18px;
 	font-weight: normal;
 	margin: 10px auto;	
-//	width: 275px;
     width: 99%;
 }
 
@@ -60,7 +59,7 @@ p {
 
 /* HEADER */
 .w_header_custom {
-	position: relative;
+    position:relative;
 	height: 45px;
 	line-height: 45px;
 	padding: 0 10px;
