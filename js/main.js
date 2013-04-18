@@ -8,8 +8,8 @@ var main = (function() {
                     'page1',
                     {id: 'locations', url: 'locations.html'},
                     {id: 'search', url: 'search.html'},
-                    'events',
-                    'news',
+                    {id: 'events', url: 'null.html', onLoad: function() {eventsAccordionInit();}},
+                    {id: 'news', url: 'null.html', onLoad: function() {newsAccordionInit();}},
                     {id: 'help', url: 'help.html'},
                     {id: 'eastbay', url: 'location-eastbay.html'},
                     {id: 'fifelake', url: 'location-fifelake.html'},
@@ -32,26 +32,6 @@ var main = (function() {
                 case 'page1':
                     if ( status == 'start' ) {
                         wink.byId('back').style.display = 'none';
-                    }
-                    if ( status == 'end' ) {
-                        try {
-                            wink.byId('news').removeChild(newsAccordion.getDomNode());
-                            wink.byId('events').removeChild(eventsAccordion.getDomNode());
-                        } catch(err) {}
-                    }
-                    break;
-
-                case 'news':
-                    if ( status == 'end' ) {
-                        wink.byId('back').style.display = 'block';
-                        newsAccordionInit();
-                    }
-                    break;
-
-                case 'events':
-                    if ( status == 'end' ) {
-                        wink.byId('back').style.display = 'block';
-                        eventsAccordionInit();
                     }
                     break;
 
