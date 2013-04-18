@@ -17,7 +17,8 @@ var main = (function() {
                     {id: 'kingsley', url: 'location-kingsley.html'},
                     {id: 'peninsula', url: 'location-peninsula.html'},
                     {id: 'woodmere', url: 'location-woodmere.html'},
-                    {id: 'myaccount', url: 'myaccount.html'}
+                    {id: 'myaccount', url: 'myaccount.html'},
+                    {id: 'xhr_json_test', url: 'xhr_json_test.html', onLoad: function(){xhr_json_test_init()}}
                 ]
             });
             document.body.appendChild(this.panels.getDomNode());
