@@ -145,9 +145,10 @@ p {
 }
 
 /* FORM */
-.w_button {
+/*.w_button {
 	-webkit-appearance: none;
 }
+*/
 
 .w_form_title {
 	display: block;
@@ -202,7 +203,7 @@ p {
 	color: #666;
 	height: 39px;
 	width: 55%;
-	font-size: 14px;
+	font-size: 18px;
 	margin:0;
 	padding: 0;
 	font-weight: bold;
@@ -219,10 +220,6 @@ p {
 	-webkit-box-flex: 0;
 }
 
-.w_button {
-	color: #fff;
-	background: #2784C5;
-}
 
 .w_checkbox_form_custom {
 	margin: 0 0 3px 0;
@@ -305,3 +302,27 @@ p {
 	top: 14px;
 	right: 15px;
 }
+
+.w_form_input_button
+{
+	width: 55%;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    overflow: hidden;
+    padding: 0 15px;
+    font-size: 18px; 
+    font-weight: bold;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-align: right;
+    height: 40px;
+    line-height: 40px;  
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    background-color:#fff;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#2fa7fa), to(#2375ae), color-stop(30%, #2785c6));
+	background-image: -moz-linear-gradient(top, #2fa7fa, #2375ae, #2785c6 30%);
+}
+
