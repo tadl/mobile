@@ -119,8 +119,8 @@ p {
     height: 19px;
 	top: 7px;
     left: -6px;
-    -webkit-transform: rotate(52deg) skew(15deg);;
-    -moz-transform: rotate(52deg) skew(15deg);;
+    -webkit-transform: rotate(52deg) skew(15deg);
+    -moz-transform: rotate(52deg) skew(15deg);
 }
 
 .w_button_custom.w_left {
