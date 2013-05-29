@@ -60,7 +60,7 @@ get_user = function (user) {
     var xhr = new wink.Xhr();
 
     xhr.sendData(
-        'http://shamrock.lib.tadl.org:3000/api/user/' + user + '.json', null, 'GET', {method: 'onsuccess'}, {method: 'onfailure'}
+        'http://shamrock.lib.tadl.org:3000/api/user/' + user + '.json?uid=' + user + '&token=' + token, null, 'GET', {method: 'onsuccess'}, {method: 'onfailure'}
     );
 
     onsuccess = function (request) {
