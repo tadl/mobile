@@ -47,7 +47,7 @@ populate_summary = function (user_obj) {
         'You have:<br />' +
         user_obj.summary.checkouts + ' items checked out<br />' +
         user_obj.summary.holds + ' items on hold<br />' +
-        user_obj.summary.balance + ' in fines / fees';
+        '$' + user_obj.summary.balance + ' in fines / fees';
 }
 
 clear_summary = function () {
