@@ -20,7 +20,7 @@ myaccount_login = function () {
         var response = request.xhrObject.response;
         var json = wink.parseJSON(response);
 
-        if (json.user) {
+        if (json.uid) {
             // clear the password field
             wink.byId('pass').value = '';
             // hide the login form
@@ -29,9 +29,9 @@ myaccount_login = function () {
             wink.byId('logout_button').style.display = 'block';
             // store the token and user id in global variables
             token = json.token;
-            user_id = json.user;
+            user_id = json.uid;
 
-            get_user(json.user);
+            get_user(user_id);
         }
     }
 
