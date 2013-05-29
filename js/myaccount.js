@@ -43,11 +43,12 @@ myaccount_login = function () {
 }
 
 populate_summary = function (user_obj) {
+        var fines = new Number(user_obj.summary.balance);
         wink.byId('myaccount_summary').innerHTML = 'Greetings, <b>' + user_obj.name + '</b>!<br />' +
         'You have:<br />' +
         user_obj.summary.checkouts + ' items checked out<br />' +
         user_obj.summary.holds + ' items on hold<br />' +
-        '$' + user_obj.summary.balance + ' in fines / fees';
+        '$' + fines.toFixed(2) + ' in fines / fees';
 }
 
 clear_summary = function () {
