@@ -11,7 +11,7 @@ do_search = function () {
         {name: 'sort', value: 'RELEVANCE'},
         {name: 'avail', value: 'true'},
         {name: 'q', value: terms}
-    }
+    ]
 
     xhr.sendData(
         'http://catton.staff.lib.tadl.org:4000/main/searchjson.json', terms, 'GET', {method: 'onsuccess'}, {method: 'onfailure'}
