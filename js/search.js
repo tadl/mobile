@@ -15,7 +15,7 @@ do_search = function () {
     ]
 
     xhr.sendData(
-        'http://catton.staff.lib.tadl.org:4000/main/searchjson.json', terms, 'GET', {method: 'onsuccess'}, {method: 'onfailure'}
+        'http://ilscatcher.herokuapp.com/main/searchjson.json', terms, 'GET', {method: 'onsuccess'}, {method: 'onfailure'}
     );
     onsuccess = function (request) {
         alert('xhr success');
