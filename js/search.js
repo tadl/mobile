@@ -1,10 +1,11 @@
 var results;
+var parameters;
 
 do_search = function () {
     var terms = wink.byId('terms').value;
     var xhr = new wink.Xhr();
 
-    var parameters = 
+    parameters = 
     [
         {name: 'utf8', value: '%E2%9C%93'},
         {name: 'mt', value: 'ALL'},
