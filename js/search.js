@@ -15,18 +15,13 @@ do_search = function () {
     ]
 
     xhr.sendData(
-        'http://ilscatcher.herokuapp.com/main/searchjson.json', terms, 'GET', {method: 'onsuccess'}, {method: 'onfailure'}
+        'http://ilscatcher.herokuapp.com/main/searchjson.json', parameters, 'GET', {method: 'onsuccess'}, {method: 'onfailure'}
     );
     onsuccess = function (request) {
-        alert('xhr success');
         var response = request.xhrObject.response;
         var json = wink.parseJSON(response);
-        wink.byId('search_results').innerHTML = "boing" + json;
+        populate_results(json);
 
-        if (json.uid) {
-            token = json.token;
-            user_id = json.uid;
-        }
     }
     onfailure = function (request) {
         alert('xhr failure');
@@ -34,17 +29,12 @@ do_search = function () {
     return false;
 }
 
-/*
-populate_summary = function (user_obj) {
-        var fines = new Number(user_obj.summary.balance);
-        wink.byId('myaccount_summary').innerHTML = 'Greetings, <b>' + user_obj.name + '</b>!<br />' +
-        'You have:<br />' +
-        user_obj.summary.checkouts + ' items checked out<br />' +
-        user_obj.summary.holds + ' items on hold<br />' +
-        '$' + fines.toFixed(2) + ' in fines / fees';
+populate_results = function (json) {
+    wink.byId('search_results').innerHTML = ''; // remove any potential previous results
+    var searchAccordion = new wink.ui.layout.Accordion({openMultipleSections: false, autoScroll: true});
+    for (var i=0; i<json[':items'].length; i++) {
+        results = searchAccordion.addSection('<div style="margin-right:2em;">' + json[':items'][i][':item'][':title'] + '</div>', '<div>bla bla bla</div>');
+    }
+    wink.byId('search_results').appendChild(searchAccordion.getDomNode());
 }
 
-clear_summary = function () {
-    wink.byId('myaccount_summary').innerHTML = '';
-}
-*/
